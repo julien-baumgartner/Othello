@@ -363,186 +363,32 @@ namespace Othello_Baumgartner_Vaucher
                 otherPlayer = 1;
             }
 
+            for(int i = 0; i < 8; i++)
+            {
+                int[] tabx = new int[] { column, column, column - 1, column + 1, column + 1, column + 1, column - 1, column - 1 };
+                int[] taby = new int[] { line - 1, line + 1, line, line, line - 1, line + 1, line + 1, line - 1 };
+                int[,] step = new int[,] { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 }, { 1, -1 }, { 1, 1 }, { -1, 1 }, { -1, -1 } };
 
-            /**************************************
-             *                - y                 *
-             **************************************/
-            for (int y = line - 1; y >= 0; y--)
-            {
-                if (listButtons[column, y].Type == otherPlayer)
+                for (int x = tabx[i], y = taby[i]; x >= 0 && y >= 0 && x < 8 && y < 8; x += step[i,0], y += step[i,1])
                 {
-                    capturedTiles.Add(listButtons[column, y]);
-                } else
-                {
-                    if (listButtons[column, y].Type == actualPlayer)
+                    if (listButtons[x, y].Type == otherPlayer)
                     {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
+                        capturedTiles.Add(listButtons[x, y]);
                     }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-            /**************************************
-            *                + y                  *
-            **************************************/
-            for (int y = line + 1; y < 8; y++)
-            {
-                if (listButtons[column, y].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[column, y]);
-                }
-                else
-                {
-                    if (listButtons[column, y].Type == actualPlayer)
+                    else
                     {
-                        foreach (MyButton tile in capturedTiles)
+                        if (listButtons[x, y].Type == actualPlayer)
                         {
-                            tile.Type = actualPlayer;
+                            foreach (MyButton tile in capturedTiles)
+                            {
+                                tile.Type = actualPlayer;
+                            }
                         }
+                        break;
                     }
-                    break;
                 }
+                capturedTiles.Clear();
             }
-            capturedTiles.Clear();
-            /**************************************
-            *                - x                 *
-            **************************************/
-            for (int x = column - 1; x >= 0; x--)
-            {
-                if (listButtons[x, line].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, line]);
-                }
-                else
-                {
-                    if (listButtons[x, line].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-            /**************************************
-            *                + x                 *
-            **************************************/
-            for (int x = column + 1; x < 8; x++)
-            {
-                if (listButtons[x, line].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, line]);
-                }
-                else
-                {
-                    if (listButtons[x, line].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-
-            /**************************************
-            *               - y + x               *
-            **************************************/
-            for (int x = column + 1,  y = line - 1; x < 8 && y >= 0; x++, y--)
-            {
-                if (listButtons[x, y].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, y]);
-                }
-                else
-                {
-                    if (listButtons[x, y].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-
-            /**************************************
-           *               + y + x               *
-           **************************************/
-            for (int x = column + 1, y = line + 1; x < 8 && y < 8; x++, y++)
-            {
-                if (listButtons[x, y].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, y]);
-                }
-                else
-                {
-                    if (listButtons[x, y].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-
-            /**************************************
-           *               + y - x               *
-           **************************************/
-            for (int x = column - 1, y = line + 1; y < 8 && x >= 0; y++, x--)
-            {
-                if (listButtons[x, y].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, y]);
-                }
-                else
-                {
-                    if (listButtons[x, y].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
-
-            /**************************************
-           *               - y - x               *
-           **************************************/
-            for (int x = column - 1, y = line - 1; x >= 0 && y >= 0; x--, y--)
-            {
-                if (listButtons[x, y].Type == otherPlayer)
-                {
-                    capturedTiles.Add(listButtons[x, y]);
-                }
-                else
-                {
-                    if (listButtons[x, y].Type == actualPlayer)
-                    {
-                        foreach (MyButton tile in capturedTiles)
-                        {
-                            tile.Type = actualPlayer;
-                        }
-                    }
-                    break;
-                }
-            }
-            capturedTiles.Clear();
             return true;
         }
     }

@@ -50,8 +50,8 @@ namespace Othello_Baumgartner_Vaucher
             this.parent = parent;
             this.row = row;
             this.col = col;
-            defaultBackground = new LinearGradientBrush(Colors.GreenYellow, Colors.Green, 90);
-            playableBackground = new LinearGradientBrush(Colors.Azure, Colors.Aqua, 90);
+            defaultBackground = new LinearGradientBrush(Colors.Green, Colors.DarkGreen, 90);
+            playableBackground = new LinearGradientBrush(Colors.GreenYellow, Colors.GreenYellow, 90);
             this.Background = defaultBackground;
             this.Click += parent.myButton_Click;
         }

@@ -47,6 +47,8 @@ namespace Othello_Baumgartner_Vaucher
             listButtons[4, 3].Type = 2;
             listButtons[3, 4].Type = 2;
             listButtons[4, 4].Type = 1;
+
+            showPlayableTiles(isWhite);
         }
 
         public void myButton_Click(object sender, RoutedEventArgs e)
@@ -60,13 +62,59 @@ namespace Othello_Baumgartner_Vaucher
 
         public void play(int x, int y)
         {
-            if(((IPlayable)this).playMove(x, y, isWhite))
+            if (((IPlayable)this).isPlayable(x, y, isWhite) && ((IPlayable)this).playMove(x, y, isWhite))
+            {
                 isWhite = !isWhite;
+                if (!showPlayableTiles(isWhite)){
+                    isWhite = !isWhite;
+                    if (!showPlayableTiles(isWhite)){
+                        Console.WriteLine("Partie finie");
+                    }
+                }
+                Console.WriteLine("White: " + ((IPlayable)this).getWhiteScore().ToString());
+                Console.WriteLine("Black: " + ((IPlayable)this).getBlackScore().ToString());
+            }
         }
+
+
+        public bool showPlayableTiles(bool isWhite)
+        {
+            bool turnPossible = false;
+            for(int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (listButtons[x, y].Type == 0)
+                    {
+                        if (((IPlayable)this).isPlayable(x, y, isWhite))
+                        {
+                            listButtons[x, y].changeBackground(true);
+                            turnPossible = true;
+                        }else
+                        {
+                            listButtons[x, y].changeBackground(false);
+                        }
+                    }
+                }          
+            }
+            return turnPossible;
+        }
+
 
         int IPlayable.getBlackScore()
         {
-            throw new NotImplementedException();
+            int score = 0;
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (listButtons[x, y].Type == 2)
+                    {
+                        score++;
+                    }
+                }
+            }
+            return score;
         }
 
         Tuple<char, int> IPlayable.getNextMove(int[,] game, int level, bool whiteTurn)
@@ -76,12 +124,221 @@ namespace Othello_Baumgartner_Vaucher
 
         int IPlayable.getWhiteScore()
         {
-            throw new NotImplementedException();
+            int score = 0;
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (listButtons[x, y].Type == 1)
+                    {
+                        score++;
+                    }
+                }
+            }
+            return score;
         }
 
         bool IPlayable.isPlayable(int column, int line, bool isWhite)
         {
-            throw new NotImplementedException();
+            if (listButtons[column, line].Type != 0)
+            {
+                return false;
+            }
+
+            List<MyButton> capturedTiles = new List<MyButton>();
+            int actualPlayer, otherPlayer;
+            if (isWhite)
+            {
+                actualPlayer = 1;
+                otherPlayer = 2;
+            }
+            else
+            {
+                actualPlayer = 2;
+                otherPlayer = 1;
+            }
+
+            /**************************************
+             *                - y                 *
+             **************************************/
+            for (int y = line - 1; y >= 0; y--)
+            {
+                if (listButtons[column, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[column, y]);
+                }
+                else
+                {
+                    if (listButtons[column, y].Type == actualPlayer)
+                    {
+                        if(capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+            /**************************************
+            *                + y                  *
+            **************************************/
+            for (int y = line + 1; y < 8; y++)
+            {
+                if (listButtons[column, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[column, y]);
+                }
+                else
+                {
+                    if (listButtons[column, y].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+            /**************************************
+            *                - x                 *
+            **************************************/
+            for (int x = column - 1; x >= 0; x--)
+            {
+                if (listButtons[x, line].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, line]);
+                }
+                else
+                {
+                    if (listButtons[x, line].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+            /**************************************
+            *                + x                 *
+            **************************************/
+            for (int x = column + 1; x < 8; x++)
+            {
+                if (listButtons[x, line].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, line]);
+                }
+                else
+                {
+                    if (listButtons[x, line].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+
+            /**************************************
+            *               - y + x               *
+            **************************************/
+            for (int x = column + 1, y = line - 1; x < 8 && y >= 0; x++, y--)
+            {
+                if (listButtons[x, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, y]);
+                }
+                else
+                {
+                    if (listButtons[x, y].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+
+            /**************************************
+           *               + y + x               *
+           **************************************/
+            for (int x = column + 1, y = line + 1; x < 8 && y < 8; x++, y++)
+            {
+                if (listButtons[x, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, y]);
+                }
+                else
+                {
+                    if (listButtons[x, y].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+
+            /**************************************
+           *               + y - x               *
+           **************************************/
+            for (int x = column - 1, y = line + 1; y < 8 && x >= 0; y++, x--)
+            {
+                if (listButtons[x, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, y]);
+                }
+                else
+                {
+                    if (listButtons[x, y].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+
+            /**************************************
+           *               - y - x               *
+           **************************************/
+            for (int x = column - 1, y = line - 1; x >= 0 && y >= 0; x--, y--)
+            {
+                if (listButtons[x, y].Type == otherPlayer)
+                {
+                    capturedTiles.Add(listButtons[x, y]);
+                }
+                else
+                {
+                    if (listButtons[x, y].Type == actualPlayer)
+                    {
+                        if (capturedTiles.Count > 0)
+                        {
+                            return true;
+                        }
+                    }
+                    break;
+                }
+            }
+            capturedTiles.Clear();
+            return false;
         }
 
         bool IPlayable.playMove(int column, int line, bool isWhite)

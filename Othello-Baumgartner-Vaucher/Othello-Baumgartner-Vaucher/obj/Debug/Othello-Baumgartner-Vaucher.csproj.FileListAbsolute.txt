@@ -12,3 +12,17 @@ D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othe
 D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.csproj.GenerateResource.Cache
 D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.exe
 D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.pdb
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.exe.config
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.exe
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.pdb
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.exe
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.pdb
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.csprojResolveAssemblyReference.cache
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\MainWindow.g.cs
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\App.g.cs
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher_MarkupCompile.cache
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher_MarkupCompile.lref
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\MainWindow.baml
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.g.resources
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello_Baumgartner_Vaucher.Properties.Resources.resources
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.csproj.GenerateResource.Cache

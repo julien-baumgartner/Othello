@@ -1,0 +1,16 @@
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Release\Othello-Baumgartner-Vaucher.exe.config
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Release\Othello-Baumgartner-Vaucher.exe
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Release\Othello-Baumgartner-Vaucher.pdb
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\MainWindow.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Page1.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\App.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\GeneratedInternalTypeHelper.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher_MarkupCompile.cache
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher_MarkupCompile.lref
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\MainWindow.baml
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Page1.baml
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher.g.resources
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello_Baumgartner_Vaucher.Properties.Resources.resources
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher.csproj.GenerateResource.Cache
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher.exe
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Release\Othello-Baumgartner-Vaucher.pdb

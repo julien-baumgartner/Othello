@@ -1,0 +1,14 @@
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.exe.config
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.exe
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\bin\Debug\Othello-Baumgartner-Vaucher.pdb
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.csprojResolveAssemblyReference.cache
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\MainWindow.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\App.g.cs
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher_MarkupCompile.cache
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher_MarkupCompile.lref
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\MainWindow.baml
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.g.resources
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello_Baumgartner_Vaucher.Properties.Resources.resources
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.csproj.GenerateResource.Cache
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.exe
+D:\dotnet\Othello-Baumgartner-Vaucher\Othello-Baumgartner-Vaucher\obj\Debug\Othello-Baumgartner-Vaucher.pdb

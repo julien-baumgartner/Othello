@@ -1,4 +1,5 @@
-﻿using OthelloConsole;
+﻿using Microsoft.Win32;
+using OthelloConsole;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Othello_Baumgartner_Vaucher
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IPlayable
+    public partial class MainWindow : IPlayable
     {
         
         private MyButton[,] listButtons = new MyButton[8, 8];
@@ -51,14 +52,6 @@ namespace Othello_Baumgartner_Vaucher
             showPlayableTiles(isWhite);
         }
 
-        public void myButton_Click(object sender, RoutedEventArgs e)
-        {
-            MyButton button = (MyButton)sender;
-
-            play(button.Row, button.Col);
-            
-
-        }
 
         public void play(int x, int y)
         {
@@ -98,6 +91,81 @@ namespace Othello_Baumgartner_Vaucher
                 }          
             }
             return turnPossible;
+        }
+
+        private void saveGame(String fileName)
+        {
+            string[] data = new string[4];
+            data[0] = isWhite.ToString();
+
+            string boardStatus = "";
+            for(int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    boardStatus += listButtons[i, j].Type + ";";
+                }
+            }
+            data[1] = boardStatus;
+            data[2] = label_Temps_Blanc.ToString();
+            data[3] = label_Temps_Noir.ToString();
+            System.IO.File.WriteAllLines(fileName, data);
+        }
+
+        private void loadGame(String fileName)
+        {
+            string[] data = System.IO.File.ReadAllLines(fileName);
+
+            if (data[0].Equals("True"))
+            {
+                isWhite = true;
+            }else
+            {
+                isWhite = false;
+            }
+            string[] boardStatus = data[1].Split(';');
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    listButtons[i, j].Type = Int32.Parse(boardStatus[i*8 + j]);
+                }
+            }
+
+            label_Temps_Blanc.Content = data[2];
+            label_Temps_Noir.Content = data[3];
+
+            showPlayableTiles(isWhite);
+        }
+
+
+        public void myButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyButton button = (MyButton)sender;
+            play(button.Row, button.Col);
+        }
+
+        private void button_Save_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if ((bool)saveFileDialog.ShowDialog())
+            {
+                saveGame(saveFileDialog.FileName);
+            }
+        }
+
+        private void button_Load_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if ((bool)openFileDialog.ShowDialog())
+            {
+                loadGame(openFileDialog.FileName);
+            }
+        }
+
+        private void button_NewGame_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
 
@@ -237,5 +305,6 @@ namespace Othello_Baumgartner_Vaucher
             }
             return true;
         }
+        
     }
 }

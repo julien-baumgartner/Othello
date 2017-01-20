@@ -56,5 +56,8 @@
         <Label x:Name="label_Score_Noir" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="214,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Temps_Noir" Content="00:00" Grid.Column="1" HorizontalAlignment="Left" Margin="214,84,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Tour" Content="blablalbal" Grid.Column="1" HorizontalAlignment="Left" Margin="18,140,0,0" VerticalAlignment="Top" Width="80"/>
+        <Button x:Name="button_Save" Content="Sauvegarder" Grid.Column="1" HorizontalAlignment="Left" Margin="10,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Save_Click"/>
+        <Button x:Name="button_Load" Content="Charger" Grid.Column="1" HorizontalAlignment="Left" Margin="90,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Load_Click"/>
+        <Button x:Name="button_NewGame" Content="Nouvelle partie" Grid.Column="1" HorizontalAlignment="Left" Margin="184,485,0,0" VerticalAlignment="Top" Width="97" Click="button_NewGame_Click"/>
     </Grid>
 </Window>

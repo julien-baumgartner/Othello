@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="546.956" Width="846.138">
     <Grid x:Name="mainGri2d">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding ActualWidth, ElementName=mainGrid, Mode=OneWay}"/>
+            <RowDefinition Height="*"/>
+         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="546.956"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="mainGrid">
             <Grid.RowDefinitions>
@@ -49,16 +53,12 @@
         <Label x:Name="label_Copy" Content="Score:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Copy1" Content="Temps:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="53"/>
         <Label x:Name="label_Score_Blanc" Content="{Binding scoreWhite}" Grid.Column="1" HorizontalAlignment="Left" Margin="54,58,0,0" VerticalAlignment="Top" Width="44"/>
-        <Label x:Name="label_Temps_Blanc" Grid.Column="1" HorizontalAlignment="Left" Margin="54,84,0,0" VerticalAlignment="Top" Width="44">
-            <Label.Content>
-                <Binding Path="timeWhite" StringFormat="{}{0:hh}:{0:mm}"/>
-            </Label.Content>
-        </Label>
-        <Label x:Name="label_Copy4" Content="Joueur Noir" Grid.Column="1" HorizontalAlignment="Left" Margin="170,27,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label_Temps_Blanc" Content="{Binding timeWhite}" Grid.Column="1" HorizontalAlignment="Left" Margin="54,84,0,0" VerticalAlignment="Top" Width="44" ContentStringFormat="mm\:ss"/>
+            <Label x:Name="label_Copy4" Content="Joueur Noir" Grid.Column="1" HorizontalAlignment="Left" Margin="170,27,0,0" VerticalAlignment="Top" Width="80"/>
         <Label x:Name="label_Copy5" Content="Score:" Grid.Column="1" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Copy6" Content="Temps:" Grid.Column="1" HorizontalAlignment="Left" Margin="170,84,0,0" VerticalAlignment="Top" Width="53"/>
         <Label x:Name="label_Score_Noir"  Content="{Binding scoreBlack}" Grid.Column="1" HorizontalAlignment="Left" Margin="214,58,0,0" VerticalAlignment="Top" Width="44"/>
-        <Label x:Name="label_Temps_Noir" Content="{Binding timeBlack, StringFormat={}{0:ss}}" Grid.Column="1" HorizontalAlignment="Left" Margin="214,84,0,0" VerticalAlignment="Top" Width="44"/>
+        <Label x:Name="label_Temps_Noir" Content="{Binding timeBlack}" Grid.Column="1" HorizontalAlignment="Left" Margin="214,84,0,0" VerticalAlignment="Top" Width="44" ContentStringFormat="mm\:ss"/>
         <Label x:Name="label_Tour" Content="blablalbal" Grid.Column="1" HorizontalAlignment="Left" Margin="18,140,0,0" VerticalAlignment="Top" Width="80"/>
         <Button x:Name="button_Save" Content="Sauvegarder" Grid.Column="1" HorizontalAlignment="Left" Margin="10,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Save_Click"/>
         <Button x:Name="button_Load" Content="Charger" Grid.Column="1" HorizontalAlignment="Left" Margin="90,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Load_Click"/>

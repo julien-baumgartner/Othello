@@ -15,13 +15,14 @@ namespace Othello_Baumgartner_Vaucher
         private MainWindow parent;
         private LinearGradientBrush defaultBackground;
         private LinearGradientBrush playableBackground;
-        private int type = 0;
+        private int type = 0; // 0 = personne, 1 = joueur blanc, 2 = joueur noir
         public int Type
         {
             get { return type; }
             set
             {
                 type = value;
+                //Change de couleur en fonction du joueur qui a pris la case
                 if(type == 1)
                 {
                     Background = new LinearGradientBrush(Colors.White, Colors.White, 90);

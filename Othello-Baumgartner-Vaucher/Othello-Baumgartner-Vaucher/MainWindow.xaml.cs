@@ -68,6 +68,7 @@ namespace Othello_Baumgartner_Vaucher
             MyTimer.Elapsed += MyTimer_Elapsed;
             MyTimer.Enabled = true;
 
+            //Initialise les cases du plateau
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -80,6 +81,7 @@ namespace Othello_Baumgartner_Vaucher
                 }
             }
 
+            //Pose les 4 premiers pions
             listButtons[3, 3].Type = 1;
             listButtons[4, 3].Type = 2;
             listButtons[3, 4].Type = 2;
@@ -88,6 +90,7 @@ namespace Othello_Baumgartner_Vaucher
             showPlayableTiles(isWhite);
         }
 
+        //Incrémente le temps du joueur qui doit jouer
         private void MyTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             if (isWhite)
@@ -102,10 +105,12 @@ namespace Othello_Baumgartner_Vaucher
             }
         }
 
+        //Le joueur actuel joue sur la case [x,y], s'il le peut
         public void play(int x, int y)
         {
             if (((IPlayable)this).isPlayable(x, y, isWhite) && ((IPlayable)this).playMove(x, y, isWhite))
             {
+                //Vérifie quel joueur doit jouer, ou indique que la partie est terminée
                 isWhite = !isWhite;
                 if (!showPlayableTiles(isWhite)){
                     isWhite = !isWhite;
@@ -113,10 +118,9 @@ namespace Othello_Baumgartner_Vaucher
                         Console.WriteLine("Partie finie");
                     }
                 }
+                //Met à jour l'interface
                 NotifyPropertyChanged("scoreWhite");
                 NotifyPropertyChanged("scoreBlack");
-                Console.WriteLine("White: " + getWhiteScore().ToString());
-                Console.WriteLine("Black: " + getBlackScore().ToString());
                 if (isWhite)
                 {
                     label_Tour.Content = "Tour du joueur blanc";
@@ -127,7 +131,7 @@ namespace Othello_Baumgartner_Vaucher
             }
         }
 
-
+        //Affiche les cases jouables
         public bool showPlayableTiles(bool isWhite)
         {
             bool turnPossible = false;
@@ -151,6 +155,7 @@ namespace Othello_Baumgartner_Vaucher
             return turnPossible;
         }
 
+        //Sauvegarde la partie
         private void saveGame(String fileName)
         {
             string[] data = new string[4];
@@ -170,6 +175,7 @@ namespace Othello_Baumgartner_Vaucher
             System.IO.File.WriteAllLines(fileName, data);
         }
 
+        //Charge la partie
         private void loadGame(String fileName)
         {
             string[] data = System.IO.File.ReadAllLines(fileName);
@@ -201,7 +207,7 @@ namespace Othello_Baumgartner_Vaucher
             showPlayableTiles(isWhite);
         }
 
-
+        //Clic sur une case du plateau
         public void myButton_Click(object sender, RoutedEventArgs e)
         {
             MyButton button = (MyButton)sender;
@@ -226,6 +232,7 @@ namespace Othello_Baumgartner_Vaucher
             }
         }
 
+        //Lance une nouvelle partie
         private void button_NewGame_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < 8; i++)
@@ -253,6 +260,7 @@ namespace Othello_Baumgartner_Vaucher
         }
 
 
+        //Retourne le score du joueur noir
         public int getBlackScore()
         {
             int score = 0;
@@ -269,11 +277,13 @@ namespace Othello_Baumgartner_Vaucher
             return score;
         }
 
+        //Sera implémenté pour le projet IA
         public Tuple<char, int> getNextMove(int[,] game, int level, bool whiteTurn)
         {
             throw new NotImplementedException();
         }
 
+        //Retourne le score du joueur blanc
         public int getWhiteScore()
         {
             int score = 0;
@@ -290,6 +300,7 @@ namespace Othello_Baumgartner_Vaucher
             return score;
         }
 
+        //Indique si une case est jouable
         public bool isPlayable(int column, int line, bool isWhite)
         {
             if (listButtons[column, line].Type != 0)
@@ -339,6 +350,7 @@ namespace Othello_Baumgartner_Vaucher
             return false;
         }
 
+        //Joue un pion
         public bool playMove(int column, int line, bool isWhite)
         {
             if (listButtons[column, line].Type == 0)
@@ -390,9 +402,5 @@ namespace Othello_Baumgartner_Vaucher
             return true;
         }
 
-        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            
-        }
     }
 }

@@ -63,7 +63,7 @@ namespace Othello_Baumgartner_Vaucher
         {
             InitializeComponent();
             this.DataContext = this;
-
+    
             MyTimer = new Timer(100);
             MyTimer.Elapsed += MyTimer_Elapsed;
             MyTimer.Enabled = true;
@@ -76,7 +76,7 @@ namespace Othello_Baumgartner_Vaucher
                     Grid.SetRow(listButtons[i, j], i);
                     Grid.SetColumn(listButtons[i, j], j);
                     
-                    mainGrid.Children.Add(listButtons[i, j]);
+                    boardGrid.Children.Add(listButtons[i, j]);
                 }
             }
 
@@ -165,8 +165,8 @@ namespace Othello_Baumgartner_Vaucher
                 }
             }
             data[1] = boardStatus;
-            data[2] = label_Temps_Blanc.ToString();
-            data[3] = label_Temps_Noir.ToString();
+            data[2] = timeWhite.TotalMilliseconds.ToString();
+            data[3] = timeBlack.TotalMilliseconds.ToString();
             System.IO.File.WriteAllLines(fileName, data);
         }
 
@@ -190,8 +190,13 @@ namespace Othello_Baumgartner_Vaucher
                 }
             }
 
-            label_Temps_Blanc.Content = data[2];
-            label_Temps_Noir.Content = data[3];
+            timeWhite = new TimeSpan(0);
+            timeBlack = new TimeSpan(0);
+            
+            timeWhite = timeWhite.Add(new TimeSpan(0, 0, 0, 0, Int32.Parse(data[2])));
+            NotifyPropertyChanged("timeWhite");
+            timeBlack = timeBlack.Add(new TimeSpan(0, 0, 0, 0, Int32.Parse(data[3])));
+            NotifyPropertyChanged("timeBlack");
 
             showPlayableTiles(isWhite);
         }
@@ -239,6 +244,12 @@ namespace Othello_Baumgartner_Vaucher
             isWhite = true;
             showPlayableTiles(isWhite);
             label_Tour.Content = "Tour du joueur blanc";
+
+            timeWhite = new TimeSpan(0);
+            timeBlack = new TimeSpan(0);
+
+            NotifyPropertyChanged("timeBlack");
+            NotifyPropertyChanged("timeWhite");
         }
 
 
@@ -378,6 +389,10 @@ namespace Othello_Baumgartner_Vaucher
             }
             return true;
         }
-        
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            
+        }
     }
 }

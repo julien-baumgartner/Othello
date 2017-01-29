@@ -117,6 +117,13 @@ namespace Othello_Baumgartner_Vaucher
                 NotifyPropertyChanged("scoreBlack");
                 Console.WriteLine("White: " + getWhiteScore().ToString());
                 Console.WriteLine("Black: " + getBlackScore().ToString());
+                if (isWhite)
+                {
+                    label_Tour.Content = "Tour du joueur blanc";
+                }else
+                {
+                    label_Tour.Content = "Tour du joueur noir";
+                }
             }
         }
 
@@ -231,6 +238,7 @@ namespace Othello_Baumgartner_Vaucher
 
             isWhite = true;
             showPlayableTiles(isWhite);
+            label_Tour.Content = "Tour du joueur blanc";
         }
 
 

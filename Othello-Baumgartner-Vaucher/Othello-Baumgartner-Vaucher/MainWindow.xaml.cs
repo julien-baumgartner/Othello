@@ -165,7 +165,21 @@ namespace Othello_Baumgartner_Vaucher
 
         private void button_NewGame_Click(object sender, RoutedEventArgs e)
         {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    listButtons[i, j].Type = 0;
+                }
+            }
 
+            listButtons[3, 3].Type = 1;
+            listButtons[4, 3].Type = 2;
+            listButtons[3, 4].Type = 2;
+            listButtons[4, 4].Type = 1;
+
+            isWhite = true;
+            showPlayableTiles(isWhite);
         }
 
 

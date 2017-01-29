@@ -2,9 +2,11 @@
 using OthelloConsole;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,15 +25,49 @@ namespace Othello_Baumgartner_Vaucher
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : IPlayable
+    public partial class MainWindow : IPlayable, INotifyPropertyChanged
     {
         
         private MyButton[,] listButtons = new MyButton[8, 8];
         private bool isWhite = true;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public int scoreWhite
+        {
+            get
+            {
+                return getWhiteScore();
+            }
+        }
+        public int scoreBlack { get
+            {
+                return getBlackScore();
+            }
+        }
+
+        public TimeSpan timeWhite { get; set; }
+        public TimeSpan timeBlack { get; set; }
+
+        public Timer MyTimer { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
+
+            MyTimer = new Timer(100);
+            MyTimer.Elapsed += MyTimer_Elapsed;
+            MyTimer.Enabled = true;
+
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -52,6 +88,19 @@ namespace Othello_Baumgartner_Vaucher
             showPlayableTiles(isWhite);
         }
 
+        private void MyTimer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            if (isWhite)
+            {
+                timeWhite = timeWhite.Add(new TimeSpan(0,0,0,0,100));
+                NotifyPropertyChanged("timeWhite");
+            }
+            else
+            {
+                timeBlack = timeBlack.Add(new TimeSpan(0, 0, 0, 0, 100));
+                NotifyPropertyChanged("timeBlack");
+            }
+        }
 
         public void play(int x, int y)
         {
@@ -64,8 +113,10 @@ namespace Othello_Baumgartner_Vaucher
                         Console.WriteLine("Partie finie");
                     }
                 }
-                Console.WriteLine("White: " + ((IPlayable)this).getWhiteScore().ToString());
-                Console.WriteLine("Black: " + ((IPlayable)this).getBlackScore().ToString());
+                NotifyPropertyChanged("scoreWhite");
+                NotifyPropertyChanged("scoreBlack");
+                Console.WriteLine("White: " + getWhiteScore().ToString());
+                Console.WriteLine("Black: " + getBlackScore().ToString());
             }
         }
 
@@ -183,7 +234,7 @@ namespace Othello_Baumgartner_Vaucher
         }
 
 
-        int IPlayable.getBlackScore()
+        public int getBlackScore()
         {
             int score = 0;
             for (int x = 0; x < 8; x++)
@@ -204,7 +255,7 @@ namespace Othello_Baumgartner_Vaucher
             throw new NotImplementedException();
         }
 
-        int IPlayable.getWhiteScore()
+        public int getWhiteScore()
         {
             int score = 0;
             for (int x = 0; x < 8; x++)
@@ -220,7 +271,7 @@ namespace Othello_Baumgartner_Vaucher
             return score;
         }
 
-        bool IPlayable.isPlayable(int column, int line, bool isWhite)
+        public bool isPlayable(int column, int line, bool isWhite)
         {
             if (listButtons[column, line].Type != 0)
             {
@@ -269,7 +320,7 @@ namespace Othello_Baumgartner_Vaucher
             return false;
         }
 
-        bool IPlayable.playMove(int column, int line, bool isWhite)
+        public bool playMove(int column, int line, bool isWhite)
         {
             if (listButtons[column, line].Type == 0)
             {

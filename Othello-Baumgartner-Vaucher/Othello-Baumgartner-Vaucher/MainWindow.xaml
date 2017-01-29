@@ -1,18 +1,18 @@
-﻿<Window x:Class="Othello_Baumgartner_Vaucher.MainWindow"
+﻿<Window x:Name="window" x:Class="Othello_Baumgartner_Vaucher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Othello_Baumgartner_Vaucher"
         mc:Ignorable="d"
-        Title="MainWindow" Height="546.956" Width="846.138">
-    <Grid x:Name="mainGri2d">
+        Title="MainWindow" Height="600" Width="800" MinHeight="600" MinWidth="800">
+    <Grid x:Name="mainGri2d" Margin="0,0,2,-3">
         <Grid.RowDefinitions>
-            <RowDefinition Height="{Binding ActualWidth, ElementName=mainGrid, Mode=OneWay}"/>
+            <RowDefinition Height="{Binding ActualWidth, ElementName=mainGrid, Mode=OneWay}" MaxHeight="{Binding ActualHeight, ElementName=mainGri2d, Mode=OneWay}"/>
             <RowDefinition Height="*"/>
-         </Grid.RowDefinitions>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MaxWidth="{Binding ActualHeight, ElementName=mainGri2d, Mode=OneWay}"/>
             <ColumnDefinition Width="350"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="mainGrid">
@@ -49,19 +49,19 @@
         </local:MyButton>-->
 
         </Grid>
-        <Label x:Name="label" Content="Joueur Blanc" Grid.Column="1" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label" Content="Joueur Blanc" Grid.Column="1" HorizontalAlignment="Left" Margin="10,27,0,435" Width="80"/>
         <Label x:Name="label_Copy" Content="Score:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Copy1" Content="Temps:" Grid.Column="1" HorizontalAlignment="Left" Margin="10,84,0,0" VerticalAlignment="Top" Width="53"/>
         <Label x:Name="label_Score_Blanc" Content="{Binding scoreWhite}" Grid.Column="1" HorizontalAlignment="Left" Margin="54,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Temps_Blanc" Content="{Binding timeWhite}" Grid.Column="1" HorizontalAlignment="Left" Margin="54,84,0,0" VerticalAlignment="Top" Width="44" ContentStringFormat="mm\:ss"/>
-            <Label x:Name="label_Copy4" Content="Joueur Noir" Grid.Column="1" HorizontalAlignment="Left" Margin="170,27,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label_Copy4" Content="Joueur Noir" Grid.Column="1" HorizontalAlignment="Left" Margin="170,27,0,0" VerticalAlignment="Top" Width="80"/>
         <Label x:Name="label_Copy5" Content="Score:" Grid.Column="1" HorizontalAlignment="Left" Margin="170,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Copy6" Content="Temps:" Grid.Column="1" HorizontalAlignment="Left" Margin="170,84,0,0" VerticalAlignment="Top" Width="53"/>
         <Label x:Name="label_Score_Noir"  Content="{Binding scoreBlack}" Grid.Column="1" HorizontalAlignment="Left" Margin="214,58,0,0" VerticalAlignment="Top" Width="44"/>
         <Label x:Name="label_Temps_Noir" Content="{Binding timeBlack}" Grid.Column="1" HorizontalAlignment="Left" Margin="214,84,0,0" VerticalAlignment="Top" Width="44" ContentStringFormat="mm\:ss"/>
         <Label x:Name="label_Tour" Content="blablalbal" Grid.Column="1" HorizontalAlignment="Left" Margin="18,140,0,0" VerticalAlignment="Top" Width="80"/>
-        <Button x:Name="button_Save" Content="Sauvegarder" Grid.Column="1" HorizontalAlignment="Left" Margin="10,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Save_Click"/>
-        <Button x:Name="button_Load" Content="Charger" Grid.Column="1" HorizontalAlignment="Left" Margin="90,485,0,0" VerticalAlignment="Top" Width="75" Click="button_Load_Click"/>
-        <Button x:Name="button_NewGame" Content="Nouvelle partie" Grid.Column="1" HorizontalAlignment="Left" Margin="184,485,0,0" VerticalAlignment="Top" Width="97" Click="button_NewGame_Click"/>
+        <Button x:Name="button_Save" Content="Sauvegarder" Grid.Column="1" HorizontalAlignment="Left" Margin="25,0,0,60" Width="75" Click="button_Save_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="button_Load" Content="Charger" Grid.Column="1" HorizontalAlignment="Left" Margin="120,0,0,60" Width="75" Click="button_Load_Click" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="button_NewGame" Content="Nouvelle partie" Grid.Column="1" HorizontalAlignment="Left" Margin="214,0,0,60" Width="97" Click="button_NewGame_Click" Height="20" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

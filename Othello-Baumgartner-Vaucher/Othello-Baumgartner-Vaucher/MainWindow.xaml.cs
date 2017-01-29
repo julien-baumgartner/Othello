@@ -269,7 +269,7 @@ namespace Othello_Baumgartner_Vaucher
             return score;
         }
 
-        Tuple<char, int> IPlayable.getNextMove(int[,] game, int level, bool whiteTurn)
+        public Tuple<char, int> getNextMove(int[,] game, int level, bool whiteTurn)
         {
             throw new NotImplementedException();
         }

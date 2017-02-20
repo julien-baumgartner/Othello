@@ -109,25 +109,39 @@ namespace Othello_Baumgartner_Vaucher
         //Le joueur actuel joue sur la case [x,y], s'il le peut
         public void play(int x, int y)
         {
-            if (((IPlayable)this).isPlayable(x, y, isWhite) && ((IPlayable)this).playMove(x, y, isWhite))
+            bool end = false;
+            if (((IPlayable)this).isPlayable(x, y, isWhite))
             {
                 //Vérifie quel joueur doit jouer, ou indique que la partie est terminée
-                isWhite = !isWhite;
-                if (!showPlayableTiles(isWhite)){
+                playMove(x, y, isWhite);
+                do
+                {
                     isWhite = !isWhite;
-                    if (!showPlayableTiles(isWhite)){
-                        Console.WriteLine("Partie finie");
+                    if (!showPlayableTiles(isWhite))
+                    {
+                        if(!end)
+                        {
+                            end = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Partie Finie: ");
+                        }
+                        isWhite = !isWhite;
                     }
-                }
+                    else
+                    {
+                        Tuple<char, int> move = getNextMove(null, 5, isWhite);
+                        playMove(move.Item2, move.Item2, isWhite);
+                        isWhite = !isWhite;
+                    }
+                } while(!showPlayableTiles(isWhite));
                 //Met à jour l'interface
                 NotifyPropertyChanged("scoreWhite");
                 NotifyPropertyChanged("scoreBlack");
                 Console.WriteLine("White: " + getWhiteScore().ToString());
                 Console.WriteLine("Black: " + getBlackScore().ToString());
 
-                Tuple<char, int> move = getNextMove(null, 5, isWhite);
-                playMove(move.Item2, move.Item2, isWhite);
-                isWhite = !isWhite;
             }
         }
 

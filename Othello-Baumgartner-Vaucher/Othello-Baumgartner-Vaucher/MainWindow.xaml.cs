@@ -30,6 +30,7 @@ namespace Othello_Baumgartner_Vaucher
         
         private MyButton[,] listButtons = new MyButton[8, 8];
         private bool isWhite = true;
+        private IAv1 IA = new IAv1();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -117,6 +118,10 @@ namespace Othello_Baumgartner_Vaucher
                 NotifyPropertyChanged("scoreBlack");
                 Console.WriteLine("White: " + getWhiteScore().ToString());
                 Console.WriteLine("Black: " + getBlackScore().ToString());
+
+                Tuple<char, int> move = getNextMove(null, 5, isWhite);
+                playMove(move.Item2, move.Item2, isWhite);
+                isWhite = !isWhite;
             }
         }
 
@@ -252,7 +257,7 @@ namespace Othello_Baumgartner_Vaucher
 
         public Tuple<char, int> getNextMove(int[,] game, int level, bool whiteTurn)
         {
-            throw new NotImplementedException();
+            return IA.getNextMove(game, level, whiteTurn);
         }
 
         public int getWhiteScore()

@@ -190,7 +190,7 @@ namespace ConsoleTestDLLOthello
                 whitePlays = !whitePlays;
                 activePlayer = (activePlayer == player1) ? player2 : player1;
                 
-                System.Threading.Thread.Sleep(200); // slow down game speed or //Console.ReadKey();
+                System.Threading.Thread.Sleep(1000); // slow down game speed or //Console.ReadKey();
             } // end of GAMELOOP
             #endregion
 

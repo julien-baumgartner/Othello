@@ -166,12 +166,20 @@ namespace OthelloIA
         //Joue un pion
         public int[,] playMoveIA(int[,] game, int column, int line, bool isWhite)
         {
-            if (game[column, line] == -1)
+            int[,] newBoard = new int[8, 8];
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    newBoard[i, j] = game[i, j];
+                }
+            }
+            if (newBoard[column, line] == -1)
             {
                 if (isWhite)
-                    game[column, line] = 0;
+                    newBoard[column, line] = 0;
                 else
-                    game[column, line] = 1;
+                    newBoard[column, line] = 1;
 
             }
 
@@ -196,18 +204,18 @@ namespace OthelloIA
 
                 for (int x = tabx[i], y = taby[i]; x >= 0 && y >= 0 && x < 8 && y < 8; x += step[i, 0], y += step[i, 1])
                 {
-                    if (game[x, y] == otherPlayer)
+                    if (newBoard[x, y] == otherPlayer)
                     {
                         int[] pos = { x, y };
                         capturedTiles.Add(pos);
                     }
                     else
                     {
-                        if (game[x, y] == actualPlayer)
+                        if (newBoard[x, y] == actualPlayer)
                         {
                             foreach (int[] pos in capturedTiles)
                             {
-                                game[pos[0], pos[1]] = actualPlayer;
+                                newBoard[pos[0], pos[1]] = actualPlayer;
                             }
                         }
                         break;
@@ -215,7 +223,7 @@ namespace OthelloIA
                 }
                 capturedTiles.Clear();
             }
-            return game;
+            return newBoard;
         }
 
     }

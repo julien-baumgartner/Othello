@@ -122,21 +122,21 @@ namespace OthelloIA
                 int[] taby = new int[] { line - 1, line + 1, line, line, line - 1, line + 1, line + 1, line - 1 };
                 int[,] step = new int[,] { { 0, -1 }, { 0, 1 }, { -1, 0 }, { 1, 0 }, { 1, -1 }, { 1, 1 }, { -1, 1 }, { -1, -1 } };
 
-                bool isCatching = false;
+                List<Tuple<int,int>> capturedTiles = new List<Tuple<int,int>>();
 
                 for (int x = tabx[i], y = taby[i]; x >= 0 && y >= 0 && x < 8 && y < 8; x += step[i, 0], y += step[i, 1])
                 {
                     if (boardstate[x, y] == otherPlayer)
                     {
-                        isCatching = true;
+                        capturedTiles.Add(new Tuple<int, int>(x, y));
                     }
                     else
                     {
                         if (boardstate[x, y] == actualPlayer)
                         {
-                            foreach (MyButton tile in capturedTiles)
+                            foreach (Tuple<int, int> coord in capturedTiles)
                             {
-                                tile.Type = actualPlayer;
+                                boardstate[coord.Item1,  coord.Item2] = (isWhite) ? 0 : 1;
                             }
                         }
                         break;

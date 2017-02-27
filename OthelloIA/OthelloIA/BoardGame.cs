@@ -13,10 +13,24 @@ namespace OthelloIA
         public int[,] boardstate;
         public int whiteScore;
         public int blackScore;
+        public IAv1 ia;
 
         public BoardGame()
         {
+            for(int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    boardstate[i, j] = -1;
+                }
+            }
 
+            boardstate[3, 3] = 0;
+            boardstate[3, 4] = 1;
+            boardstate[4, 4] = 0;
+            boardstate[4, 3] = 1;
+
+            ia = new IAv1();
         }
 
         public int[,] GetBoard()
@@ -26,12 +40,12 @@ namespace OthelloIA
 
         public string GetName()
         {
-            return "Joel-Julien";
+            return "Vaucher-Baumgartner";
         }
 
         public Tuple<int, int> GetNextMove(int[,] game, int level, bool whiteTurn)
         {
-            throw new NotImplementedException();
+            ia.getNextMove(game, level, whiteTurn);
         }
 
         public int GetBlackScore()

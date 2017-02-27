@@ -35,17 +35,21 @@ namespace OthelloIA
                         if (val > best)
                         {
                             best = val;
-                            bestMove = Tuple.Create(1, 2);
-                            if (best > a)
+                            bestMove = Tuple.Create(i, j);
+                            if (best < a)
                             {
                                 a = best;
-                                if (a >= b) {
+                                if (a <= b) {
                                     return bestMove;
                                 }
                             }
                         }
                     }
                 }
+            }
+            if(bestMove == null)
+            {
+                bestMove = Tuple.Create(-1, -1);
             }
             return bestMove;
         }
@@ -99,10 +103,13 @@ namespace OthelloIA
                     if(game[i,j] == type)
                     {
                         value++;
+                    }else if(game[i, j] != -1)
+                    {
+                        value--;
                     }
                 }
            }
-           return value;
+           return -value;
         }
 
         //Indique si une case est jouable
@@ -191,7 +198,7 @@ namespace OthelloIA
                 {
                     if (game[x, y] == otherPlayer)
                     {
-                        int[] pos = { i, j };
+                        int[] pos = { x, y };
                         capturedTiles.Add(pos);
                     }
                     else
@@ -213,4 +220,4 @@ namespace OthelloIA
 
     }
 }
-}
+

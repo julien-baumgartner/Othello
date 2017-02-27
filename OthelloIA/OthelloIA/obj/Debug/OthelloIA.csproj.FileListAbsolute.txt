@@ -1,0 +1,6 @@
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\bin\Debug\OthelloIA.dll
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\bin\Debug\OthelloIA.pdb
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\bin\Debug\IPlayable.dll
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\bin\Debug\IPlayable.pdb
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\obj\Debug\OthelloIA.dll
+D:\IA\othello\Othello\Othello\OthelloIA\OthelloIA\obj\Debug\OthelloIA.pdb

@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{828DA7F9-AA35-4254-A398-ED8F8AB61740}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{3444484A-5368-457A-BB87-FAEF97A733C1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OthelloIA</RootNamespace>
-    <AssemblyName>OthelloIA</AssemblyName>
+    <RootNamespace>ConsoleTestDLLOthello</RootNamespace>
+    <AssemblyName>ConsoleTestDLLOthello</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,7 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="IPlayable">
-      <HintPath>..\..\DOTNET_OTHELLOv_1.02\IPlayable\IPlayable\bin\Debug\IPlayable.dll</HintPath>
+      <HintPath>..\..\IPlayable\IPlayable\bin\Debug\IPlayable.dll</HintPath>
+    </Reference>
+    <Reference Include="OthelloIA2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OthelloIA2\OthelloIA2\bin\Debug\OthelloIA2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,9 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BoardGame.cs" />
-    <Compile Include="IAv1.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\ControllerOthello.csproj">
+      <Project>{cf774232-1cf7-48aa-8780-59c0204c33a2}</Project>
+      <Name>ControllerOthello</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

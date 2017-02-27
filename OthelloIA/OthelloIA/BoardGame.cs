@@ -10,7 +10,7 @@ namespace OthelloIA
     public class BoardGame : IPlayable.IPlayable
     {
 
-        public int[,] boardstate;
+        public int[,] boardstate = new int[8,8];
         public int whiteScore;
         public int blackScore;
         public IAv1 ia;
@@ -45,7 +45,15 @@ namespace OthelloIA
 
         public Tuple<int, int> GetNextMove(int[,] game, int level, bool whiteTurn)
         {
-            ia.getNextMove(game, level, whiteTurn);
+            int[,]  testBoard =new int[8,8];
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    testBoard[i, j] = game[i, j];
+                }
+            }
+            return ia.getNextMove(testBoard, level, whiteTurn);
         }
 
         public int GetBlackScore()
@@ -93,7 +101,7 @@ namespace OthelloIA
                     }
                     else
                     {
-                        if (boardstate[x, y].Type == actualPlayer)
+                        if (boardstate[x, y] == actualPlayer)
                         {
                             if (isCatching)
                             {
@@ -121,13 +129,13 @@ namespace OthelloIA
             int actualPlayer, otherPlayer;
             if (isWhite)
             {
-                actualPlayer = 1;
-                otherPlayer = 2;
+                actualPlayer = 0;
+                otherPlayer = 1;
             }
             else
             {
-                actualPlayer = 2;
-                otherPlayer = 1;
+                actualPlayer = 1;
+                otherPlayer = 0;
             }
 
             for (int i = 0; i < 8; i++)
@@ -150,7 +158,7 @@ namespace OthelloIA
                         {
                             foreach (Tuple<int, int> coord in capturedTiles)
                             {
-                                boardstate[coord.Item1,  coord.Item2] = (isWhite) ? 0 : 1;
+                                boardstate[coord.Item1,  coord.Item2] = actualPlayer;
                             }
                         }
                         break;

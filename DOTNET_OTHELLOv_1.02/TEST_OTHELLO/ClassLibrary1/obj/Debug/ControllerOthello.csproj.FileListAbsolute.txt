@@ -5,3 +5,9 @@ C:\Temp\DOTNET_OTHELLO\TEST_OTHELLO\ClassLibrary1\bin\Debug\IPlayable.pdb
 C:\Temp\DOTNET_OTHELLO\TEST_OTHELLO\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Temp\DOTNET_OTHELLO\TEST_OTHELLO\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 C:\Temp\DOTNET_OTHELLO\TEST_OTHELLO\ClassLibrary1\obj\Debug\ControllerOthello.csprojResolveAssemblyReference.cache
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\bin\Debug\IPlayable.dll
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\bin\Debug\IPlayable.pdb
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

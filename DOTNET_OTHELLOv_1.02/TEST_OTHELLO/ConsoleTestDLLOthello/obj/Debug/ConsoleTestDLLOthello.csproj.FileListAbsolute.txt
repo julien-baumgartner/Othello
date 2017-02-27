@@ -46,3 +46,6 @@ D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOt
 D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\bin\Debug\IPlayable.pdb
 D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\bin\Debug\OthelloIA2.pdb
 D:\IA\othello\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\obj\Debug\ConsoleTestDLLOthello.csprojResolveAssemblyReference.cache
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\bin\Debug\ConsoleTestDLLOthello.exe.config
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\obj\Debug\ConsoleTestDLLOthello.exe
+C:\Joel_Vaucher\INF3-b\dotNET\Othello\Othello\DOTNET_OTHELLOv_1.02\TEST_OTHELLO\ConsoleTestDLLOthello\obj\Debug\ConsoleTestDLLOthello.pdb

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OthelloIA
+namespace OthelloIA6
 {
     public class IAv1
     {
@@ -36,10 +36,10 @@ namespace OthelloIA
                         {
                             best = val;
                             bestMove = Tuple.Create(i, j);
-                            if (best < a)
+                            if (best > a)
                             {
                                 a = best;
-                                if (a <= b) {
+                                if (a >= b) {
                                     return bestMove;
                                 }
                             }
@@ -85,13 +85,53 @@ namespace OthelloIA
                     }
                 }
              }
+            if(best == Int32.MinValue)
+            {
+                return eval(game);
+            }
             return best;
         }
+
+        int[,] matrix3Diag = {{ 1, 1, 1, 1 },
+                                  { 1, 1, 1, 0 },
+                                  { 1, 1, 0, 0 },
+                                  { 1, 0, 0, 0 }};
+
+        int[,] matrix2Diag = {{ 1, 1, 1, 0 },
+                                  { 1, 1, 0, 0 },
+                                  { 1, 0, 0, 0 },
+                                  { 0, 0, 0, 0 }};
+
+        int[,] matrix1Diag = {{ 1, 1, 0, 0 },
+                                  { 1, 0, 0, 0 },
+                                  { 0, 0, 0, 0 },
+                                  { 0, 0, 0, 0 }};
+    
+        int[,] matrixValues= {{ 25, -3, 11,  8,  8, 11, -3, 25 },
+                              { -3, -7,  1,  1,  1,  1, -7, -3 },
+                              { 11,  1,  2,  2,  2,  2,  1, 11 },
+                              {  8,  1,  2,  1,  1,  2,  1,  8 },
+                              {  8,  1,  2,  1,  1,  2,  1,  8 },
+                              { 11,  1,  2,  2,  2,  2,  1, 11 },
+                              { -3, -7,  1,  1,  1,  1, -7, -3 },
+                              { 25, -3, 11,  8,  8, 11, -3, 25 }};
+
+        /*int[,] matrixValues = {{ 20, -3, 11,  8,  8, 11, -3, 20 },
+                              { -3, -7, -4,  1,  1, -4, -7, -3 },
+                              { 11, -4,  2,  2,  2,  2, -4, 11 },
+                              {  8,  1,  2, -3, -3,  2,  1,  8 },
+                              {  8,  1,  2, -3, -3,  2,  1,  8 },
+                              { 11, -4,  2,  2,  2,  2, -4, 11 },
+                              { -3, -7, -4,  1,  1, -4, -7, -3 },
+                              { 20, -3, 11,  8,  8, 11, -3, 20 }};*/
 
         public int eval(int[,] game)
         {
             int value = 0;
             int type = 0;
+
+            
+
             if (!isWhite)
             {
                 type = 1;
@@ -102,14 +142,14 @@ namespace OthelloIA
                 {
                     if(game[i,j] == type)
                     {
-                        value++;
+                        value += matrixValues[i, j];
                     }else if(game[i, j] != -1)
                     {
-                        value--;
+                        value -= matrixValues[i, j];
                     }
                 }
            }
-           return -value;
+           return value;
         }
 
         //Indique si une case est jouable

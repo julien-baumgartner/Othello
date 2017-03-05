@@ -104,7 +104,7 @@ namespace ConsoleTestDLLOthello
             }
             else // b) add a reference to your class assembly in the project and instantiate it 
             {
-                player1 = new OthelloIA.BoardGame();   // for example
+                player1 = new OthelloIA6.BoardGame();   // for example
                 player2 = new OthelloIA2.OthelloBoard();   // for example
             }
             // The Game controller

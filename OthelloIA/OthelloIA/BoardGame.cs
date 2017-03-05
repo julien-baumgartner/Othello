@@ -5,14 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using IPlayable;
 
-namespace OthelloIA
+namespace OthelloIA6
 {
     public class BoardGame : IPlayable.IPlayable
     {
 
         public int[,] boardstate = new int[8,8];
-        public int whiteScore;
-        public int blackScore;
         public IAv1 ia;
 
         public BoardGame()
@@ -58,12 +56,34 @@ namespace OthelloIA
 
         public int GetBlackScore()
         {
-            return blackScore;
+            int score = 0;
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (boardstate[x,y] == 1)
+                    {
+                        score++;
+                    }
+                }
+            }
+            return score;
         }
 
         public int GetWhiteScore()
         {
-            return whiteScore;
+            int score = 0;
+            for (int x = 0; x < 8; x++)
+            {
+                for (int y = 0; y < 8; y++)
+                {
+                    if (boardstate[x, y] == 0)
+                    {
+                        score++;
+                    }
+                }
+            }
+            return score;
         }
 
         public bool IsPlayable(int column, int line, bool isWhite)

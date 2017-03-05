@@ -18,11 +18,11 @@ namespace OthelloIA6
 
         public Tuple<int, int> getNextMove(int[,] game, int level, bool whiteTurn)
         {
-            int a = Int32.MinValue;
-            int b = Int32.MaxValue;
+            double a = Double.MinValue;
+            double b = Double.MaxValue;
             isWhite = whiteTurn;
 
-            int best = Int32.MinValue;
+            double best = Double.MinValue;
             Tuple<int, int> bestMove = null;
             for (int i = 0; i < 8; i++)
             {
@@ -31,7 +31,7 @@ namespace OthelloIA6
                     if (isPlayableIA(game, i, j, whiteTurn))
                     {
                         int[,] newGame = playMoveIA(game, i, j, whiteTurn);
-                        int val = -alphabeta(newGame, level - 1, -b, -a, !whiteTurn);
+                        double val = -alphabeta(newGame, level - 1, -b, -a, !whiteTurn);
                         if (val > best)
                         {
                             best = val;
@@ -54,14 +54,14 @@ namespace OthelloIA6
             return bestMove;
         }
 
-        public int alphabeta(int[,] game, int depth, int a, int b, bool white)
+        public double alphabeta(int[,] game, int depth, double a, double b, bool white)
         {
             if (depth == 0)
             {
                 return eval(game);
             }
 
-            int best = Int32.MinValue;
+            double best = Double.MinValue;
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
@@ -69,7 +69,7 @@ namespace OthelloIA6
                     if (isPlayableIA(game, i, j, white))
                     {
                         int[,] newGame = playMoveIA(game, i, j, white);
-                        int val = -alphabeta(newGame, depth-1, -b, -a, !white);
+                        double val = -alphabeta(newGame, depth-1, -b, -a, !white);
                         if(val > best)
                         {
                             best = val;
@@ -92,20 +92,6 @@ namespace OthelloIA6
             return best;
         }
 
-        int[,] matrix3Diag = {{ 1, 1, 1, 1 },
-                                  { 1, 1, 1, 0 },
-                                  { 1, 1, 0, 0 },
-                                  { 1, 0, 0, 0 }};
-
-        int[,] matrix2Diag = {{ 1, 1, 1, 0 },
-                                  { 1, 1, 0, 0 },
-                                  { 1, 0, 0, 0 },
-                                  { 0, 0, 0, 0 }};
-
-        int[,] matrix1Diag = {{ 1, 1, 0, 0 },
-                                  { 1, 0, 0, 0 },
-                                  { 0, 0, 0, 0 },
-                                  { 0, 0, 0, 0 }};
     
         int[,] matrixValues= {{ 25, -3, 11,  8,  8, 11, -3, 25 },
                               { -3, -7,  1,  1,  1,  1, -7, -3 },
@@ -116,40 +102,65 @@ namespace OthelloIA6
                               { -3, -7,  1,  1,  1,  1, -7, -3 },
                               { 25, -3, 11,  8,  8, 11, -3, 25 }};
 
-        /*int[,] matrixValues = {{ 20, -3, 11,  8,  8, 11, -3, 20 },
-                              { -3, -7, -4,  1,  1, -4, -7, -3 },
-                              { 11, -4,  2,  2,  2,  2, -4, 11 },
-                              {  8,  1,  2, -3, -3,  2,  1,  8 },
-                              {  8,  1,  2, -3, -3,  2,  1,  8 },
-                              { 11, -4,  2,  2,  2,  2, -4, 11 },
-                              { -3, -7, -4,  1,  1, -4, -7, -3 },
-                              { 20, -3, 11,  8,  8, 11, -3, 20 }};*/
 
-        public int eval(int[,] game)
+        public double eval(int[,] game)
         {
-            int value = 0;
             int type = 0;
 
-            
+            int nbPionPlayer = 0;
+            int nbPionOtherPlayer = 0;
+
+            int nbMovePlayer = 0;
+            int nbMoveOtherPlayer = 0;
+
+            int allyCorner = 0;
+            int ennemiCorner = 0;
 
             if (!isWhite)
             {
                 type = 1;
             }
+
+            allyCorner += (game[0, 0] == type) ? 1 : 0;
+            ennemiCorner += (game[0, 0] != type && game[0, 0] != -1) ? 1 : 0;
+            allyCorner += (game[7, 0] == type) ? 1 : 0;
+            ennemiCorner += (game[7, 0] != type && game[7, 0] != -1) ? 1 : 0;
+            allyCorner += (game[7, 7] == type) ? 1 : 0;
+            ennemiCorner += (game[7, 7] != type && game[7, 7] != -1) ? 1 : 0;
+            allyCorner += (game[0, 7] == type) ? 1 : 0;
+            ennemiCorner += (game[0, 7] != type && game[0, 7] != -1) ? 1 : 0;
+
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
                     if(game[i,j] == type)
                     {
-                        value += matrixValues[i, j];
+                        nbPionPlayer++;
                     }else if(game[i, j] != -1)
                     {
-                        value -= matrixValues[i, j];
+                        nbPionOtherPlayer++;
+                    }else
+                    {
+                        if(isPlayableIA(game, i, j, isWhite))
+                        {
+                            nbMovePlayer++;
+                        }
+                        if (isPlayableIA(game, i, j, !isWhite))
+                        {
+                            nbMoveOtherPlayer++;
+                        }
                     }
                 }
            }
-           return value;
+
+           double diffPion = (double)(nbPionPlayer - nbMoveOtherPlayer)/ (double)(nbPionPlayer + nbMoveOtherPlayer);
+           double diffMove = (double)(nbMovePlayer - nbMoveOtherPlayer) / (double)(nbPionPlayer + nbMoveOtherPlayer);
+           double diffCorner = ((double)allyCorner + (double)ennemiCorner) / ((double)allyCorner + (double)ennemiCorner);
+
+            double value = diffMove + diffPion + diffCorner;
+
+            return value;
         }
 
         //Indique si une case est jouable
